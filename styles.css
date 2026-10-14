@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@400;500;600;700;800&display=swap');
 :root { color-scheme: dark; --yellow: #ffcf23; --white: #f4f0e7; --muted: #b8b3a9; font-family: 'Barlow', Arial, sans-serif; background: #141310; color: var(--white); }
 * { box-sizing: border-box; }
-html { min-width: 320px; scrollbar-width: none; -ms-overflow-style: none; }
-body { margin: 0; scrollbar-width: none; -ms-overflow-style: none; }
+html { height: 100%; overflow: hidden; overscroll-behavior: none; scrollbar-width: none; -ms-overflow-style: none; }
+body { position: fixed; inset: 0; margin: 0; overflow: hidden; overscroll-behavior: none; scrollbar-width: none; -ms-overflow-style: none; }
 ::-webkit-scrollbar { display: none; width: 0; height: 0; }
 body::before { content: ''; position: fixed; z-index: -2; inset: 0; background: linear-gradient(180deg, rgb(12 12 10 / 35%), rgb(12 12 10 / 8%) 35%, rgb(12 12 10 / 75%)), url('assets/brick-wall.jpg') center / cover; }
 body::after { content: ''; pointer-events: none; position: fixed; z-index: -1; inset: 0; background: radial-gradient(ellipse at 50% 35%, transparent 10%, rgb(0 0 0 / 50%) 100%); }
@@ -93,4 +93,41 @@ h1 > span:first-child { color: var(--yellow); }
   .site-tapes .tape-copy { font-size: 18px; }
   .site-tapes .tape-top { left: 50%; top: 98px; width: 1700px; transform: translate(-50%, -50%) rotate(-3deg); }
   .site-tapes .tape-bottom { bottom: 28px; width: 1700px; transform: translateX(-50%) rotate(-4deg); }
+}
+
+/* Fit the whole composition into the viewport; the document cannot scroll. */
+.site-shell {
+  --header-size: clamp(44px, 8dvh, 88px);
+  --footer-size: clamp(32px, 6dvh, 64px);
+  height: 100%;
+  height: 100dvh;
+  min-height: 0;
+  overflow: clip;
+}
+.site-header { flex: 0 0 var(--header-size); min-height: 0; }
+.site-footer { flex: 0 0 var(--footer-size); min-height: 0; padding: 0; }
+main {
+  min-height: 0;
+  padding: clamp(14px, 3dvh, 32px) 0 clamp(46px, 10dvh, 90px);
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+.logo-stage { height: 100%; min-height: 0; }
+.brand-sticker { width: auto; height: min(100%, 38dvh, 420px, 78vw); aspect-ratio: 1; max-width: 80vw; }
+.brand-sticker img { width: 100%; height: 100%; object-fit: contain; }
+.announcement { padding-top: clamp(6px, 1.5dvh, 15px); }
+h1 { font-size: clamp(28px, min(6.3vw, 9dvh), 91px); }
+.construction-mark { margin-top: clamp(8px, 2dvh, 22px); }
+.construction-mark svg { width: clamp(12px, 2.5dvh, 19px); height: clamp(12px, 2.5dvh, 19px); }
+.site-tapes { bottom: var(--footer-size); }
+.site-tapes .tape-top { top: calc(var(--header-size) + 24px); }
+.site-tapes .tape-bottom { bottom: clamp(12px, 3dvh, 28px); }
+@media (max-width: 700px) { h1 { font-size: clamp(28px, min(12vw, 8dvh), 80px); } }
+@media (max-height: 480px) {
+  main { padding-top: 8px; padding-bottom: 42px; }
+  h1 { font-size: clamp(22px, 7dvh, 34px); }
+  .construction-mark { display: none; }
+  .site-tapes .tape { height: 28px; }
+  .site-tapes .tape-copy { font-size: 16px; }
+  .site-tapes .tape-top { top: calc(var(--header-size) + 12px); }
 }
