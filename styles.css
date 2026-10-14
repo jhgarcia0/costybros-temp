@@ -1,12 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@400;500;600;700;800&display=swap');
 :root { color-scheme: dark; --yellow: #ffcf23; --white: #f4f0e7; --muted: #b8b3a9; font-family: 'Barlow', Arial, sans-serif; background: #141310; color: var(--white); }
 * { box-sizing: border-box; }
-html { min-width: 320px; }
+html { min-width: 320px; scrollbar-color: var(--yellow) #141310; scrollbar-width: thin; }
+::-webkit-scrollbar { width: 9px; height: 9px; }
+::-webkit-scrollbar-track { background: #141310; }
+::-webkit-scrollbar-thumb { background: var(--yellow); border: 2px solid #141310; border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: #ffe16b; }
 body { margin: 0; }
 body::before { content: ''; position: fixed; z-index: -2; inset: 0; background: linear-gradient(180deg, rgb(12 12 10 / 35%), rgb(12 12 10 / 8%) 35%, rgb(12 12 10 / 75%)), url('assets/brick-wall.jpg') center / cover; }
 body::after { content: ''; pointer-events: none; position: fixed; z-index: -1; inset: 0; background: radial-gradient(ellipse at 50% 35%, transparent 10%, rgb(0 0 0 / 50%) 100%); }
 .site-shell { min-height: 100svh; overflow: hidden; display: flex; flex-direction: column; }
-.site-header { min-height: 88px; margin: 0 4.5%; display: flex; align-items: center; justify-content: space-between; gap: 16px; border-bottom: 1px solid rgb(235 221 190 / 14%); }
+.site-header { position: relative; z-index: 5; min-height: 88px; margin: 0 4.5%; display: flex; align-items: center; justify-content: space-between; gap: 16px; border-bottom: 1px solid rgb(235 221 190 / 14%); }
 .wordmark { display: inline-flex; align-items: center; gap: 10px; color: var(--yellow); text-decoration: none; font-size: 18px; font-weight: 800; letter-spacing: -.4px; }
 .wordmark svg { width: 29px; height: 26px; fill: var(--yellow); }
 .wordmark .crown-base { stroke: var(--yellow); stroke-width: 2; fill: none; }
@@ -24,6 +28,9 @@ main { flex: 1; padding: 18px 0 36px; display: flex; flex-direction: column; ali
 .tape::after { bottom: 5px; }
 .tape-back { z-index: 1; transform: translate(-50%, -50%) rotate(12deg); background-color: #dfae17; }
 .tape-front { z-index: 2; transform: translate(-50%, -50%) rotate(-12deg); }
+.tape-upper { z-index: 0; top: 15%; height: 47px; transform: translate(-50%, -50%) rotate(-4deg); background-color: #edbd22; }
+.tape-lower { z-index: 1; top: 83%; height: 47px; transform: translate(-50%, -50%) rotate(5deg); }
+.tape-upper .tape-copy, .tape-lower .tape-copy { font-size: 23px; }
 .tape-copy { width: 100%; display: flex; justify-content: center; gap: 24px; white-space: nowrap; font-family: 'Barlow Condensed', Impact, sans-serif; font-weight: 800; font-size: 27px; letter-spacing: 1px; }
 .tape-copy span { display: inline-flex; align-items: center; gap: 24px; }
 .tape-copy b { font-size: 25px; font-weight: 600; opacity: .8; }
@@ -55,6 +62,9 @@ h1 > span:first-child { color: var(--yellow); }
   .tape { height: 48px; width: 1700px; top: 46%; }
   .tape-front { transform: translate(-50%, -50%) rotate(-17deg); }
   .tape-back { transform: translate(-50%, -50%) rotate(17deg); }
+  .tape-upper { top: 15%; height: 36px; transform: translate(-50%, -50%) rotate(-7deg); }
+  .tape-lower { top: 82%; height: 36px; transform: translate(-50%, -50%) rotate(8deg); }
+  .tape-upper .tape-copy, .tape-lower .tape-copy { font-size: 18px; }
   .tape-copy { font-size: 22px; gap: 18px; }
   .tape-copy span { gap: 18px; }
   .tape-copy b { font-size: 18px; }
