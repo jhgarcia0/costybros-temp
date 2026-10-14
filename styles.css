@@ -1,12 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@400;500;600;700;800&display=swap');
 :root { color-scheme: dark; --yellow: #ffcf23; --white: #f4f0e7; --muted: #b8b3a9; font-family: 'Barlow', Arial, sans-serif; background: #141310; color: var(--white); }
 * { box-sizing: border-box; }
-html { min-width: 320px; scrollbar-color: var(--yellow) #141310; scrollbar-width: thin; }
-::-webkit-scrollbar { width: 9px; height: 9px; }
-::-webkit-scrollbar-track { background: #141310; }
-::-webkit-scrollbar-thumb { background: var(--yellow); border: 2px solid #141310; border-radius: 8px; }
-::-webkit-scrollbar-thumb:hover { background: #ffe16b; }
-body { margin: 0; }
+html { min-width: 320px; scrollbar-width: none; -ms-overflow-style: none; }
+body { margin: 0; scrollbar-width: none; -ms-overflow-style: none; }
+::-webkit-scrollbar { display: none; width: 0; height: 0; }
 body::before { content: ''; position: fixed; z-index: -2; inset: 0; background: linear-gradient(180deg, rgb(12 12 10 / 35%), rgb(12 12 10 / 8%) 35%, rgb(12 12 10 / 75%)), url('assets/brick-wall.jpg') center / cover; }
 body::after { content: ''; pointer-events: none; position: fixed; z-index: -1; inset: 0; background: radial-gradient(ellipse at 50% 35%, transparent 10%, rgb(0 0 0 / 50%) 100%); }
 .site-shell { position: relative; isolation: isolate; min-height: 100svh; overflow: hidden; display: flex; flex-direction: column; }
@@ -18,7 +15,7 @@ body::after { content: ''; pointer-events: none; position: fixed; z-index: -1; i
 .wordmark:focus-visible { outline: 2px solid var(--yellow); outline-offset: 8px; }
 .site-status { display: flex; align-items: center; gap: 9px; font-size: 10px; font-weight: 600; letter-spacing: 2px; color: #d8d1c2; }
 .status-dot { width: 6px; height: 6px; background: var(--yellow); box-shadow: 0 0 12px rgb(255 207 35 / 45%); border-radius: 50%; }
-main { position: relative; z-index: 1; flex: 1; padding: 18px 0 140px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+main { position: relative; z-index: 1; flex: 1; padding: 52px 0 140px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
 .logo-stage { width: 100%; height: clamp(320px, 47vh, 450px); position: relative; display: grid; place-items: center; isolation: isolate; }
 .brand-sticker { margin: 0; z-index: 3; width: clamp(310px, 43vh, 420px); max-width: 80vw; transform: rotate(-4deg); filter: drop-shadow(0 12px 10px rgb(0 0 0 / 60%)); animation: sticker-arrive .7s ease-out both; }
 .brand-sticker img { display: block; width: 100%; height: auto; }
@@ -53,7 +50,7 @@ h1 > span:first-child { color: var(--yellow); }
   .wordmark { font-size: 15px; gap: 7px; }
   .wordmark svg { width: 23px; }
   .site-status { font-size: 8px; letter-spacing: 1px; gap: 7px; }
-  main { padding-top: 12px; padding-bottom: 120px; }
+  main { padding-top: 38px; padding-bottom: 120px; }
   .logo-stage { height: clamp(290px, 42svh, 380px); }
   .brand-sticker { width: min(340px, 78vw); }
   .tape { height: 48px; width: 1700px; top: 46%; }
@@ -73,7 +70,7 @@ h1 > span:first-child { color: var(--yellow); }
 }
 @media (max-height: 760px) and (min-width: 701px) {
   .site-header { min-height: 68px; }
-  main { padding-top: 8px; padding-bottom: 120px; }
+  main { padding-top: 44px; padding-bottom: 120px; }
   .logo-stage { height: 300px; }
   .brand-sticker { width: 300px; }
   h1 { font-size: 68px; }
@@ -88,14 +85,12 @@ h1 > span:first-child { color: var(--yellow); }
 .site-tapes { position: absolute; inset: 0 0 64px; z-index: 0; overflow: hidden; pointer-events: none; user-select: none; }
 .site-tapes .tape { height: 44px; }
 .site-tapes .tape-copy { font-size: 22px; }
-.site-tapes .tape-corner { left: calc(100% - 70px); top: 86px; width: 720px; transform: translate(-50%, -50%) rotate(38deg); }
-.site-tapes .tape-side { left: -24px; top: 58%; width: 600px; transform: translate(-50%, -50%) rotate(-70deg); background-color: #e7b820; }
+.site-tapes .tape-top { left: 50%; top: 116px; width: max(150vw, 1800px); transform: translate(-50%, -50%) rotate(-3deg); }
 .site-tapes .tape-bottom { left: 50%; top: auto; bottom: 26px; width: max(150vw, 1800px); transform: translateX(-50%) rotate(-4deg); }
 @media (max-width: 700px) {
   .site-tapes { bottom: 64px; }
   .site-tapes .tape { height: 36px; }
   .site-tapes .tape-copy { font-size: 18px; }
-  .site-tapes .tape-corner { left: calc(100% - 12px); top: 70px; width: 440px; transform: translate(-50%, -50%) rotate(48deg); }
-  .site-tapes .tape-side { left: -26px; top: 61%; width: 420px; transform: translate(-50%, -50%) rotate(-78deg); }
-  .site-tapes .tape-bottom { bottom: 28px; width: 1700px; transform: translateX(-50%) rotate(-6deg); }
+  .site-tapes .tape-top { left: 50%; top: 98px; width: 1700px; transform: translate(-50%, -50%) rotate(-3deg); }
+  .site-tapes .tape-bottom { bottom: 28px; width: 1700px; transform: translateX(-50%) rotate(-4deg); }
 }
